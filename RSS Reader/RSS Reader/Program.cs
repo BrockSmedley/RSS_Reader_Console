@@ -69,6 +69,7 @@ namespace RSS_Reader
         static XmlNode nodeItem;
         static string url = "http://rss.cnn.com/rss/cnn_topstories.rss";
         static List<story> stories = new List<story>();
+        static int consoleBuffer = Console.BufferHeight+150;
 
         static void Main(string[] args)
         {
@@ -144,11 +145,13 @@ namespace RSS_Reader
                         }
                     }
 
+                    Console.Clear();
                     //URL Title
                     Console.WriteLine(title + "\n" + language + "\n" + link + "\n" + description + "\n\n\n");
 
                     foreach (story s in stories)
                     {
+                        Console.SetBufferSize(Console.WindowWidth, consoleBuffer + 5);
                         Console.WriteLine("Title: " + s.title + "\nLink: " + s.link + "\n" + "Description: " + s.description + "\n");
                     }
 
